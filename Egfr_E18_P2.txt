@@ -22,7 +22,7 @@ immune.combined <- IntegrateData(anchorset = immune.anchors, dims = 1:20)
 --------------Batch Correction after Dimensionality Reduction
 immune.combined <- ScaleData(immune.combined)
 immune.combined <- RunPCA(immune.combined, features = VariableFeatures(object = immune.combined))
-immune.combined  <- RunHarmony(combined, group.by.vars = "Sample", plot_convergence = TRUE)
+immune.combined  <- RunHarmony(immune.combined, group.by.vars = "Sample", plot_convergence = TRUE)
 -------------- Dimensionality Reduction ====================
 immune.combined <- FindNeighbors(immune.combined, dims = 1:20)
 DefaultAssay(immune.combined) <- "integrated"
@@ -57,11 +57,12 @@ immune.anchors <- FindIntegrationAnchors(object.list = list(Control,EGFR), dims 
 remove(Control,EGFR)
 immune.combined <- IntegrateData(anchorset = immune.anchors, dims = 1:20)
 --------------Dimensionality Reduction 
+all.genes <- rownames(immune.combined)
 immune.combined <- ScaleData(immune.combined, vars.to.regress = c("S.Score", "G2M.Score"), features = all.genes)
 immune.combined <-RunPCA(immune.combined, features = VariableFeatures(object = immune.combined))
 immune.combined <-FindNeighbors(immune.combined, dims = 1:20)
 immune.combined <-FindClusters(immune.combined, resolution = 0.3)
-immune.combined <-RunUMAP(Egfr_CKO_P2, dims = 1:30)
+immune.combined <-RunUMAP(immune.combined, dims = 1:30)
 -------------- Find the marker genes
 Clusters <- FindAllMarkers(immune.combined, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
 
