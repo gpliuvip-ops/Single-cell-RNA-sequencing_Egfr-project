@@ -44,8 +44,8 @@ EGFR <- CreateSeuratObject(counts = EGFR, project = "EGFR")
 ------Filtering
 Control[["percent.mt"]] <- PercentageFeatureSet(Control, pattern = "^mt-")
 EGFR[["percent.mt"]] <- PercentageFeatureSet(EGFR, pattern = "^mt-")
-Control <- subset(Control, subset = nFeature_RNA > 200 & nFeature_RNA < 6000 & percent.mt < 10)
-EGFR <- subset(EGFR, subset = nFeature_RNA > 200 & nFeature_RNA < 6000 & percent.mt < 10)
+Control <- subset(Control, subset = nFeature_RNA > 800 & nFeature_RNA < 6000 & percent.mt < 10)
+EGFR <- subset(EGFR, subset = nFeature_RNA > 800 & nFeature_RNA < 6000 & percent.mt < 10)
 ------Preprocessing
 Control$Sample <- "Control"
 Control<- NormalizeData(Control, normalization.method = "LogNormalize", scale.factor = 10000)
