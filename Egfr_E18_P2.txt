@@ -1,4 +1,4 @@
-___________________E18________________________________________
+___________________E18 Cortex________________________________________
 ------Creat Seurat Object
 Control <- Read10X(data.dir ="H:/Control/filtered_feature_bc_matrix/")
 Control <- CreateSeuratObject(counts = Control, project = "Control")
@@ -35,7 +35,7 @@ Clusters <- FindAllMarkers(immune.combined, only.pos = TRUE, min.pct = 0.25, log
 
 
 
-___________________P2________________________________________
+___________________P2 Cortex________________________________________
 ------Creat Seurat Object
 Control <- Read10X(data.dir ="H:/Control/filtered_feature_bc_matrix/")
 Control <- CreateSeuratObject(counts = Control, project = "Control")
